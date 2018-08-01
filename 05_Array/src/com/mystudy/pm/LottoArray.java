@@ -50,6 +50,7 @@ public class LottoArray {
 		
 		
 	}
+	
 
 	static void printArray(int[] lotto) {
 		for(int i=0; i<lotto.length; i++) {
