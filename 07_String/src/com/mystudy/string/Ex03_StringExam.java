@@ -63,8 +63,10 @@ public class Ex03_StringExam {
 
 		if(ch[7] == '1' || ch[7] == '3') {
 			System.out.println("남성");
-		} else {
+		} else if(ch[7] == '2' || ch[7] == '4'){
 			System.out.println("여성");
+		} else {
+			System.out.println("[예외] 성별값이 1~4가 아닙니다.");
 		}
 		
 
@@ -72,10 +74,10 @@ public class Ex03_StringExam {
 		System.out.println("--- 문제 4 ----");
 		//		(월 : 1~12, 일 : 1~31)
 		//4-1. 주민번호의 3~4번째 숫자 값 추출하고 1~12 범위의 값인지 확인(if문 사용)
-		System.out.println("주민번호의 3~4번째 값 : " + str.substring(2,4));
 		int month1 = Integer.parseInt(str.substring(2,4));
+		System.out.println("주민번호의 3~4번째 값 : " + str.substring(2,4));
 		System.out.println(month1);
-		if(month1 >= 1 || month1 <= 12) {
+		if(month1 >= 1 && month1 <= 12) {
 			System.out.println(month1 + ", 1~12 범위의 안에 있습니다");
 		} else {
 			System.out.println("1~12 범위를 벗어났습니다.");
@@ -84,7 +86,7 @@ public class Ex03_StringExam {
 		System.out.println("주민번호의 5~6번째 값 : " + str.substring(4,6));
 		int day1 = Integer.parseInt(str.substring(4,6));
 		System.out.println(day1);
-		if(day1 >= 1 || day1 <= 31) {
+		if(day1 >= 1 && day1 <= 31) {
 			System.out.println(day1 + ", 1~31 범위의 안에 있습니다.");
 		} else {
 			System.out.println("1~31 범위를 벗어났습니다.");
