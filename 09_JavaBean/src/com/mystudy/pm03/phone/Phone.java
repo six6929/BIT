@@ -1,6 +1,6 @@
 package com.mystudy.pm03.phone;
 
-public class Phone {
+public class Phone extends Object {
 	//부호로 접근 제한자 표시
 	//+ : public, # : protected, - :private, (default)
 	
@@ -10,17 +10,20 @@ public class Phone {
 	private String type;
 	private String phoneNo;
 
+	public Phone() {
+		
+	}
 	//생성자(phoneNo) : type값 "Phone 타입" 입력처리
 	public Phone(String phoneNo) {
 		super();
 		this.phoneNo = phoneNo;
-		this.type = "Phone 타입";
+		type = "Phone 타입";
 	}
 
 	//생성자(type, phoneNo)
 	
 	public Phone(String type, String phoneNo) {
-		super();
+		super(); //()는 생성자 호출;
 		this.type = type;
 		this.phoneNo = phoneNo;
 	}
@@ -40,20 +43,18 @@ public class Phone {
 	//call() : "전화걸기" 화면출력
 	
 	public void call() {
-		System.out.println("전화걸기");
+		System.out.println(">> 전화걸기");
 	}
 	//receiveCall() : ">>전화받기" 화면출력
 	
 	public void receiveCall() {
-		System.out.println(">>전화받기");
+		System.out.println(">> 전화받기");
 	}
 	
 	//view() : toString() 호출
 
 	public void view() {
-		System.out.println("---전화기 정보---");
-		System.out.println("type : " + type);
-		System.out.println("phoneNo : " + phoneNo);
+		System.out.println(toString());
 	}
 	
 	//toString() : 이클립스에서 자동생성
