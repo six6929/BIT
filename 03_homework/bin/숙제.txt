@@ -1,0 +1,15 @@
+ArrayList를 이용해서 성적처리
+1. StudentVO 클래스 정의 (총점, 평균 계산)
+2. StudentTest 클래스에서 다수학생의 정보를 생성하고  
+3. ArrayList 객체에 대해서 생성하고 저장
+4.저장한 객체를 전달해서 성적을 출력할 메소드를 작성
+
+
+StudentVO 만들고
+StudentVO 안에는 필드, 생성자, 메소드(set, get, 메서드), 총점,평균 계산 메소드 포함 , 하나의 데이터 출력(각 국어,영어,수학)
+
+
+StudentTest 만들고
+Test안에서 학생 5명정보를 생성
+       ArrayList에 담고
+       printData(ArrayList)
