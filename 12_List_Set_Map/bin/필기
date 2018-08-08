@@ -1,0 +1,28 @@
+ArrayList는 연속적인 저장공간
+LinkedList는 저장공간을 연결한것?
+
+ArrayList의 경우 add를 하면 맨뒷부분에 하나의 저장공간이 늘어남
+
+LinkedList의경우에 맨 뒷부분에 add를 하려고하면 인덱스를 찾아서 뒤에 붙여야함.
+
+add를 할 경우, 끝에다가 할 경우에는 ArrayList가 LinkedList보다 속도 측에서 빠르다.
+
+
+데이터를 저장할 때 선입선출방식(은행에서 주로 사용)을 쓸건지 후입선출방식을 쓸건지 정해야한다.
+
+<숙제>
+
+Set을 이용해서 저장하고 조회하고
+1. ArrayList -> Set을 이용(HashSet, TreeSet)
+
+2. 이름을 가지고 조회 (equals)
+	ex) StudentVO (name)을 가지고 조회가능하게끔
+	FindName(String name)
+	String name을 매개변수로 값을 전달하면 
+
+
+3. 평균점수로 찾기 (90점 이상인 사람)
+	FindAvg(double avg)
+
+	
+4. 화면에 표시
