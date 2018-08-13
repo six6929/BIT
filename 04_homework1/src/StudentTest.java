@@ -27,19 +27,17 @@ public class StudentTest {
 			System.out.println(ite.next());
 		}
 		
-		System.out.println(set.equals(stu1));
-		System.out.println(set.equals(stu2));
-		System.out.println(set.equals(stu3));
-		System.out.println(set.equals(stu4));
-		System.out.println(stu4.equals(stu5));
-		System.out.println(stu5.equals(stu6));
-		System.out.println(set.hashCode());
-		
-		ite = set.iterator();
-		while(ite.hasNext()) {
-			System.out.println(ite.next());
-		}
-		
+//		System.out.println(set.equals(stu1));
+//		System.out.println(set.equals(stu2));
+//		System.out.println(set.equals(stu3));
+//		System.out.println(set.equals(stu4));
+//		System.out.println(stu4.equals(stu5));
+//		System.out.println(stu5.equals(stu6));
+//		System.out.println(set.hashCode());
+		System.out.println("-------------------------");
+		ArrayList stuArr = new ArrayList(set);
+		stu1.findAvg(90, stuArr);
 		
 	}
+	
 }

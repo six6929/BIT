@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class StudentVO {
 	//필드선언
@@ -111,30 +112,21 @@ public class StudentVO {
 	}
 
 	//equals 및 hashcode 사용
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
+	
+	void findName(String name, ArrayList stuArr) {
+		for(int i=0; i<stuArr.size(); i++) {
+			if(name == ((StudentVO)stuArr.get(i)).getName()) {
+				System.out.println(stuArr.get(i));
+			}
+		}
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		StudentVO other = (StudentVO) obj;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
+	
+	void findAvg(double avg, ArrayList stuArr) {
+		for(int i=0; i<stuArr.size(); i++) {
+			if(((StudentVO)stuArr.get(i)).getAvg() > avg) {
+				System.out.println((StudentVO)stuArr.get(i));
+			}
+		}
 	}
 	
 	
