@@ -12,7 +12,10 @@ public class StudentManageListMain {
 		manager.printDataAll();
 		//		manager.deleteData("È«±æµ¿");
 		System.out.println("---------------");
+		manager.deleteData("È«±æµ¿");
+		manager.printDataAll();
 		manager.getData(90);
+		manager.getData("±èÀ¯½Å");
 		
 		
 	}
