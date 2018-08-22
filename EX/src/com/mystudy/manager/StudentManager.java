@@ -59,13 +59,14 @@ public class StudentManager {
 		//전달받은 vo의 id가 list에 없으면 list에 추가(1 리턴)
 		//전달받은 vo의 id가 list에 있으면 "이미 존재하는 데이타" 출력(0 리턴)
 		for(int i=0; i<list.size(); i++) {
-			if(vo.getId() == (list.get(i)).getId()) {
+			if(list.contains(vo)) {
 				System.out.println("이미 존재하는 데이터");
-				result = 0;
+			} else {
+				list.add(vo);
+				result = 1;
 			}
+			
 		}
-		list.add(vo);
-		result = 1;
 		return result;
 	}
 	
