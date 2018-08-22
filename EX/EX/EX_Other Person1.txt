@@ -1,0 +1,79 @@
+package com.mystudy.manager;
+
+public class StudentManagerMain {
+
+	public static void main(String[] args) {
+		StudentManager manager = new StudentManager();
+		//StudentManager 클래스의 메소드 이용 CRUD 테스트
+
+		StudentVO stu1 = new StudentVO("001","김학생",99,88,77);
+		StudentVO stu2 = new StudentVO("002","나학생",22,82,92);
+		StudentVO stu3 = new StudentVO("003","박학생",33,54,36);
+		StudentVO stu4 = new StudentVO("003","이학생",44,74,44);
+		StudentVO stu5 = new StudentVO("005","대학생",55,95,55);
+		StudentVO stu6 = new StudentVO("006","한학생",66,86,66);
+		
+		//insert 메소드 확인
+		System.out.println("---- insert 메소드 확인 ----");
+		manager.insert(stu1);
+		manager.insert(stu1);		// >>이미 존재하는 데이타입니다. 확인해 주십시오.
+		manager.insert(stu2);
+		manager.insert(stu3);
+		
+		System.out.println();
+		
+		//selectOnt, selectAll 메소드 확인
+		System.out.println("---- selectOnt, selectAll 메소드 확인 ----");
+		System.out.println(manager.selectOne("001"));
+		System.out.println(manager.selectOne(stu1));
+		
+		System.out.println(manager.selectAll());
+		
+		System.out.println();
+		
+		//update 메소드 확인
+		System.out.println("---- update 메소드 확인 ----");
+		System.out.println(manager.selectAll());
+		manager.update(stu4);
+		System.out.println(manager.selectAll());
+		manager.update(stu5);		//데이타가 없으므로 수정할 수 없습니다.
+		System.out.println(manager.selectAll());
+		
+		System.out.println();
+		
+		//delete 메소드 확인
+		System.out.println("---- delete 메소드 확인 ----");
+		manager.delete(stu4);
+		System.out.println(manager.selectAll());
+		manager.delete("001");
+		System.out.println(manager.selectAll());
+		manager.delete(stu6);		//데이타가 없으므로 삭제할 수 없습니다.
+		System.out.println(manager.selectAll());
+
+		System.out.println();
+		
+		//displayAll 메소드 확인
+		System.out.println("---- displayAll 메소드 확인 ----");
+		manager.insert(stu5);
+		manager.insert(stu6);
+		
+		manager.displayAll();
+		
+		System.out.println();
+		
+		//displayOne 메소드 확인
+		System.out.println("---- displayOne 메소드 확인 ----");
+		manager.displayOne(stu1);
+		manager.displayOne(stu5);
+		
+		manager.displayOne("001");
+		manager.displayOne("006");
+		
+		System.out.println();
+		
+		//printSungjuk 메소드 확인
+		System.out.println("---- printSungjuk 메소드 확인 ----");
+		manager.printSungjuk();
+			
+	}
+}
