@@ -98,8 +98,7 @@ public class StudentVO {
 	
 	@Override
 	public String toString() {
-		return "StudentVO [id=" + id + ", name=" + name + ", kor=" + kor + ", eng=" + eng + ", math=" + math + ", tot="
-				+ tot + ", avg=" + avg + "]";
+		return id + "\t" + name + "\t" + kor + "\t" +  eng + "\t" + math + "\t" + tot + "\t" + avg;
 	}
 	
 }
