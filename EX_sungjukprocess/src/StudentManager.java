@@ -52,7 +52,8 @@ public class StudentManager {
 	
 	public ArrayList<StudentVO> selectAll() {
 		ArrayList<StudentVO> result = null;
-		//전체 데이타를 리턴 처리
+
+//		전체 데이타를 리턴 처리
 		for (StudentVO vo : list) {
 			System.out.println(vo + "\t");
 		}
