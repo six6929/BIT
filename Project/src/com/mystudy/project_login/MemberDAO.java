@@ -43,7 +43,7 @@ public class MemberDAO {
 			
 			String sql = "";
 			sql += "SELECT ID, PW ";
-			sql += "  FROM PROJECT_MEMBER";
+			sql += "  FROM MEMBER";
 			
 			pstmt = conn.prepareStatement(sql);
 			

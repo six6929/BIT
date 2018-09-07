@@ -5,19 +5,20 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class LoginTest {
-
 	static String id = "";
 	static String pw = "";
 	static int num = 0;
 	static Scanner sc = new Scanner(System.in);
 	static StudentSelect ss = new StudentSelect();
-
+	static ManagerDAO mdao = new ManagerDAO();
+	static RollbookDAO rbdao = new RollbookDAO();
+	
 	public static void main(String[] args) {
 		Login();
 		
 	}
 
-	
+
 	public static void Login() {
 		HashMap<String, String> map = new HashMap<String, String>();
 		
@@ -50,7 +51,9 @@ public class LoginTest {
 				}
 			}
 		}
+		Enter();
 		Menu();
+		
 	}
 	
 	
@@ -60,7 +63,7 @@ public class LoginTest {
 				System.out.println("관리자ID로 로그인하셨습니다.");
 				System.out.println("---------------------");
 				System.out.println("<<메뉴를 선택하세요>>");
-				System.out.println("1.조회 \t2.입력\t3.삭제\t0.종료");
+				System.out.println("1.조회 \t2.입력\t3.삭제\t0.종료\t-1.로그아웃");
 				System.out.println("---------------------");
 				System.out.print("번호 선택 : ");
 				
@@ -69,19 +72,65 @@ public class LoginTest {
 				switch (num) {
 				case 1 :
 					System.out.println("1번 조회를 선택하셨습니다.");
+					System.out.println("조회하실 항목을 선택해주세요.");
+					System.out.println("1.ID \t 2. NAME  \t 3.PHONE \t 4. MAIL \t 5. 전체");
+					num = sc.nextInt();
+					switch(num) {
+					case 1 :
+						ManagerVO mvo = mdao.selectId(sc.next());
+						System.out.println(mvo);
+						break;
+					
+					case 2 :
+						mvo = mdao.selectName(sc.next());
+						System.out.println(mvo);
+						break;
+					
+					case 3 :
+						mvo = mdao.selectPhone(sc.next());
+						System.out.println(mvo);
+						break;
+					
+					case 4 :
+						mvo = mdao.selectMail(sc.next());
+						System.out.println(mvo);
+						break;
+					
+					case 5 :
+						ArrayList<ManagerVO> list = mdao.selectAll();
+						for (ManagerVO mavo : list) {
+							System.out.println(mavo);
+						}
+						
+						break;
+						
+					default :
+						System.out.println("1~5사이의 숫자를 선택해주세요.");
+					}
+					Menu();
 					break;
 					
 				case 2 :
 					System.out.println("2번 입력을 선택하셨습니다.");
+					System.out.println("새로운 학생의 정보를 입력해주세요.");
+					System.out.println("(ID, NAME, PW, PHONE, MAIL, AGE, GENDER, LECTURENAME)");
+					int cnt = mdao.insertData(sc.next(), sc.next(), sc.nextInt(), sc.next(), sc.next(), sc.nextInt(), sc.next(), sc.next());
+					System.out.println("입력이 완료되었습니다.");
 					break;
 				
 				case 3 : 
 					System.out.println("3번 삭제를 선택하셨습니다.");
+					mdao.deleteOne(sc.next());
+					System.out.println("삭제가 완료되었습니다.");
 					break;
 					
 				case 0 :
 					System.out.println("종료되었습니다.");
 					result = false;
+					break;
+				
+				case -1 :
+					Logout();
 					break;
 				
 				default :
@@ -100,7 +149,7 @@ public class LoginTest {
 				case 1:
 				System.out.println("1번 조회를 선택하셨습니다.");
 					if(num == 1) {
-						System.out.println("1.개인정보조회\t 2.출결정보조회\t0.뒤로가기");
+						System.out.println("1.개인정보조회\t 2.출결정보조회");
 						num = sc.nextInt();
 						switch (num) {
 						case 1 :
@@ -117,6 +166,7 @@ public class LoginTest {
 							
 						case 2 : 
 							System.out.println(id + "님의 출결정보입니다.");
+//							ss.selectAttendance();
 							break;
 
 						default :
@@ -128,6 +178,48 @@ public class LoginTest {
 				
 				case 2 :
 					System.out.println("2번 수정을 선택하셨습니다.");
+					System.out.println("수정할 항목을 선택해주세요.");
+					System.out.println("1.이름\t2.비밀번호\t3.휴대전화\t4.메일\t5.나이\t6.성\t7.강의명변경");
+					num = sc.nextInt();
+					switch(num) {
+					case 1:
+						ss.updateName(id, sc.next());
+						System.out.println("수정이 완료되었습니다.");
+						break;
+						
+					case 2:
+						ss.updatePw(sc.nextInt(), id);
+						System.out.println("수정이 완료되었습니다.");
+						break;
+						
+					case 3 :
+						ss.updatePhone(sc.next(), id);
+						System.out.println("수정이 완료되었습니다.");
+						break;
+						
+					case 4 :
+						ss.updateMail(sc.next(), id);
+						System.out.println("수정이 완료되었습니다.");
+						break;
+					
+					case 5 :
+						ss.updateAge(sc.nextInt(), id);
+						System.out.println("수정이 완료되었습니다.");
+						break;
+					
+					case 6 :
+						ss.updateGender(sc.next(), id);
+						System.out.println("수정이 완료되었습니다.");
+						break;
+						
+					case 7 :
+						ss.updateLecturename(sc.next(), id);
+						System.out.println("수정이 완료되었습니다.");
+						break;
+						
+					default :
+						System.out.println("1~7사이의 숫자를 선택해주세요.");
+					}
 					Menu();
 					break;
 					
@@ -135,6 +227,7 @@ public class LoginTest {
 					System.out.println("종료되었습니다.");
 					result = false;
 					break;
+					
 				case -1 :
 					Logout();
 					break;
@@ -145,12 +238,43 @@ public class LoginTest {
 			return result;
 			
 	}
+
 	
 	public static void Logout() {
 		System.out.println("로그아웃 하시겠습니까?");
 		System.out.println("1.Yes\t2.No");
 		num = sc.nextInt();
 		if(num == 1) {
+			Exit();
+			Login();
+		}
+		if(num == 2) {
+			Menu();
+		}
+	}
+	
+	public static void Enter() {
+		System.out.println("입실하시겠습니까?");
+		System.out.println("1.Yes\t2.No");
+		num = sc.nextInt();
+		if(num == 1) {
+			rbdao.insertIntime(id);
+			System.out.println("입실처리 되었습니다.");
+			
+		}
+		if(num == 2) {
+			Login();
+		}
+	}
+	
+	
+	public static void Exit() {
+		System.out.println("퇴실하시겠습니까?");
+		System.out.println("1.Yes\t2.No");
+		num = sc.nextInt();
+		if(num == 1) {
+			rbdao.updateOutTime(id);
+			System.out.println("퇴실처리되었습니다.");
 			Login();
 		}
 		if(num == 2) {

@@ -41,7 +41,7 @@ public class StudentSelect {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			StringBuilder sb = new StringBuilder();
 			sb.append(" SELECT ID, NAME, PW, PHONE, MAIL, AGE, GENDER, LECTURENAME ");
-			sb.append("   FROM PROJECT_MEMBER ");
+			sb.append("   FROM MEMBER ");
 			
 			pstmt = conn.prepareStatement(sb.toString());
 			rs = pstmt.executeQuery();
@@ -74,7 +74,7 @@ public class StudentSelect {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			StringBuilder sb = new StringBuilder();
 			sb.append(" SELECT ALLDATE, ATTENDANCERATE, DAYS, PHONE, MAIL, AGE, GENDER, LECTURENAME ");
-			sb.append("   FROM PROJECT_MEMBER ");
+			sb.append("   FROM MEMBER ");
 			
 			pstmt = conn.prepareStatement(sb.toString());
 			rs = pstmt.executeQuery();
@@ -111,7 +111,7 @@ public class StudentSelect {
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
-			sql += " UPDATE PROJECT_MEMBER ";
+			sql += " UPDATE MEMBER ";
 			sql += "    SET NAME = ? ";
 			sql += "      , PW = ? ";
 			sql += "      , PHONE = ? ";
@@ -153,7 +153,7 @@ public class StudentSelect {
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
-			sql += " UPDATE PROJECT_MEMBER ";
+			sql += " UPDATE MEMBER ";
 			sql += "    SET NAME = ? ";
 			sql += "  WHERE ID = ? ";
 			
@@ -181,7 +181,7 @@ public class StudentSelect {
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
-			sql += " UPDATE PROJECT_MEMBER ";
+			sql += " UPDATE MEMBER ";
 			sql += "    SET PW = ? ";
 			sql += "  WHERE ID = ? ";
 			
@@ -208,7 +208,7 @@ public class StudentSelect {
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
-			sql += " UPDATE PROJECT_MEMBER ";
+			sql += " UPDATE MEMBER ";
 			sql += "    SET PHONE = ? ";
 			sql += "  WHERE ID = ? ";
 			
@@ -236,7 +236,7 @@ public class StudentSelect {
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
-			sql += " UPDATE PROJECT_MEMBER ";
+			sql += " UPDATE MEMBER ";
 			sql += "    SET MAIL = ? ";
 			sql += "  WHERE ID = ? ";
 			
@@ -263,7 +263,7 @@ public class StudentSelect {
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
-			sql += " UPDATE PROJECT_MEMBER ";
+			sql += " UPDATE MEMBER ";
 			sql += "    SET AGE = ? ";
 			sql += "  WHERE ID = ? ";
 			
@@ -292,7 +292,7 @@ public class StudentSelect {
 			try {
 				conn = DriverManager.getConnection(URL, USER, PASSWORD);
 				String sql = "";
-				sql += " UPDATE PROJECT_MEMBER ";
+				sql += " UPDATE MEMBER ";
 				sql += "    SET GENDER = ? ";
 				sql += "  WHERE ID = ? ";
 				
@@ -318,7 +318,7 @@ public class StudentSelect {
 			try {
 				conn = DriverManager.getConnection(URL, USER, PASSWORD);
 				String sql = "";
-				sql += " UPDATE PROJECT_MEMBER ";
+				sql += " UPDATE MEMBER ";
 				sql += "    SET LECTURENAME = ? ";
 				sql += "  WHERE ID = ? ";
 				

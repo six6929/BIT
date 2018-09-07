@@ -40,7 +40,7 @@ public class ManagerDAO {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			StringBuilder sb = new StringBuilder();
 			sb.append(" SELECT ID, NAME, PW, PHONE, MAIL, AGE, GENDER, LECTURENAME ");
-			sb.append("   FROM PROJECT_MEMBER ");
+			sb.append("   FROM MEMBER ");
 			
 			pstmt = conn.prepareStatement(sb.toString());
 			rs = pstmt.executeQuery();
@@ -74,7 +74,7 @@ public class ManagerDAO {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
 			sql += " SELECT ID, NAME, PW, PHONE, MAIL, AGE, GENDER, LECTURENAME";
-			sql += "  FROM PROJECT_MEMBER ";
+			sql += "  FROM MEMBER ";
 			sql += " WHERE ID = ? ";
 			
 			
@@ -119,7 +119,7 @@ public class ManagerDAO {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
 			sql += " SELECT ID, NAME, PW, PHONE, MAIL, AGE, GENDER, LECTURENAME";
-			sql += "  FROM PROJECT_MEMBER ";
+			sql += "  FROM MEMBER ";
 			sql += " WHERE NAME = ? ";
 			
 			
@@ -164,7 +164,7 @@ public class ManagerDAO {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
 			sql += " SELECT ID, NAME, PW, PHONE, MAIL, AGE, GENDER, LECTURENAME";
-			sql += "  FROM PROJECT_MEMBER ";
+			sql += "  FROM MEMBER ";
 			sql += " WHERE PHONE = ? ";
 			
 			
@@ -208,7 +208,7 @@ public class ManagerDAO {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
 			sql += " SELECT ID, NAME, PW, PHONE, MAIL, AGE, GENDER, LECTURENAME";
-			sql += "  FROM PROJECT_MEMBER ";
+			sql += "  FROM MEMBER ";
 			sql += " WHERE MAIL = ? ";
 			
 			
@@ -248,10 +248,11 @@ public class ManagerDAO {
 	//2-3. 관리자 - 회원등록 및 삭제기능 (등록)
 	public int insertData(String id, String name, int pw, String phone, String mail, int age, String gender, String lecturename) {
 		int result = 0;
+//		System.out.println(id+","+name+","+pw+","+phone+","+mail+","+age+","+gender+","+lecturename);
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
-			sql += " INSERT INTO PROJECT_MEMBER ";
+			sql += " INSERT INTO MEMBER ";
 			sql += "        (ID, NAME, PW, PHONE, MAIL, AGE, GENDER, LECTURENAME) ";
 			sql += " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			
@@ -286,7 +287,7 @@ public class ManagerDAO {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			
 			StringBuilder sb = new StringBuilder();
-			sb.append("DELETE FROM PROJECT_MEMBER WHERE ID = ?");
+			sb.append("DELETE FROM MEMBER WHERE ID = ?");
 			
 			pstmt = conn.prepareStatement(sb.toString());
 			
