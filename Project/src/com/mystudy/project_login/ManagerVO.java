@@ -8,9 +8,30 @@ public class ManagerVO {
 	private String mail;
 	private int age;
 	private String gender;
-	private String lecture;
+	private String lecturename;
+	String days;
+	String inTime;
+	String outTime;
+	int studyTime;
+	int startdate;
+	int finishdate;
+
 		
-	public ManagerVO(String id, String name, int pw, String phone, String mail, int age, String gender, String lecture) {
+	
+	public ManagerVO() {}
+	
+	public ManagerVO(String name,String days, String inTime, String outTime, int startdate, int finishdate) {
+		super();
+		this.name = name;
+		this.days = days;
+		this.inTime = inTime;
+		this.outTime = outTime;
+		this.startdate = startdate;
+		this.finishdate = finishdate;
+		
+		}
+	
+	public ManagerVO(String lecturename ,String id, String name, int pw, String phone, String mail, int age, String gender) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -19,7 +40,7 @@ public class ManagerVO {
 		this.mail = mail;
 		this.age = age;
 		this.gender = gender;
-		this.lecture = lecture;
+		this.lecturename = lecturename;
 		}
 
 	public String getId() {
@@ -65,14 +86,20 @@ public class ManagerVO {
 		this.gender = gender;
 	}
 	public String getLecture() {
-		return lecture;
+		return lecturename;
 	}
-	public void setLecture(String lecture) {
-		this.lecture = lecture;
+	public void setLecture(String lecturename) {
+		this.lecturename = lecturename;
 	}
 
 	@Override
 	public String toString() {
-		return "ID : " + id  + "\n" +  " 이름 : " + name + "\n" + " 패스워드 : " + pw + "\n" + " 전화번호 : " + phone + "\n" + " 메일 :" + mail + "\n" + " 나이 : " + age + "\n" + " 성별 : " + gender + "\n" + " 훈련과정 : " + lecture + "";
+		return "ID : " + id  + "\n" +  " 이름 : " + name + "\n" + " 패스워드 : " + pw + "\n" + " 전화번호 : " + phone + "\n" + " 메일 :" + mail + "\n" + " 나이 : " + age + "\n" + " 성별 : " + gender + "\n" + " 훈련과정 : " + lecturename + "";
+	}
+	
+	public String stringForAtt() {
+		return  "이름 : " + name + "\n" + "일자 : " + days + "\n" + "입실시간 : " + inTime + "\n" + 
+				"퇴실시간 : " + outTime + "\n" + "시작월 : " + startdate + "\n" + "끝나는월 : " + finishdate;
+	
 	}
 }

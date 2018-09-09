@@ -30,14 +30,14 @@ public class LoginTest {
 		}
 		
 		while(true) {
-			System.out.println("---------------");
-			System.out.println("환 영 합 니 다 ~~~~~");
+			System.out.println("======================");
+			System.out.println("\t로그인 ");
 			System.out.print("ID : ");
 			id = sc.next().trim();
 			
 			System.out.print("PW : ");
 			pw = sc.next().trim();
-			System.out.println("--------------");
+			System.out.println("======================");
 
 			if(!map.containsKey(id)) {
 				System.out.println("ID가 일치하지 않습니다.");
@@ -47,6 +47,7 @@ public class LoginTest {
 					System.out.println("비밀번호가 일치하지 않습니다.");
 				} else {
 					System.out.println("로그인에 성공하셨습니다.");
+					System.out.println();
 					break;
 				}
 			}
@@ -60,11 +61,12 @@ public class LoginTest {
 	public static boolean Menu() {
 		boolean result = true;
 			if(id.equals("admin")) {
-				System.out.println("관리자ID로 로그인하셨습니다.");
-				System.out.println("---------------------");
-				System.out.println("<<메뉴를 선택하세요>>");
+				System.out.println();
+				System.out.println("\t관리자ID로 로그인하셨습니다.");
+				System.out.println("============================================");
+				System.out.println("\t     <<메뉴를 선택하세요>>");
 				System.out.println("1.조회 \t2.입력\t3.삭제\t0.종료\t-1.로그아웃");
-				System.out.println("---------------------");
+				System.out.println("============================================");
 				System.out.print("번호 선택 : ");
 				
 				num = sc.nextInt();
@@ -97,9 +99,11 @@ public class LoginTest {
 						break;
 					
 					case 5 :
-						ArrayList<ManagerVO> list = mdao.selectAll();
+						ArrayList<ManagerVO> list = mdao.AttendanceList();
 						for (ManagerVO mavo : list) {
-							System.out.println(mavo);
+							System.out.println("======================");
+							System.out.println(mavo.stringForAtt());
+							System.out.println("======================");
 						}
 						
 						break;
@@ -113,15 +117,53 @@ public class LoginTest {
 				case 2 :
 					System.out.println("2번 입력을 선택하셨습니다.");
 					System.out.println("새로운 학생의 정보를 입력해주세요.");
-					System.out.println("(ID, NAME, PW, PHONE, MAIL, AGE, GENDER, LECTURENAME)");
-					int cnt = mdao.insertData(sc.next(), sc.next(), sc.nextInt(), sc.next(), sc.next(), sc.nextInt(), sc.next(), sc.next());
-					System.out.println("입력이 완료되었습니다.");
+					System.out.println("(LECTURENAME, ID, NAME, PW, PHONE, MAIL, AGE, GENDER)");
+
+					ManagerVO mvo = new ManagerVO();
+					
+					sc.nextLine(); // 개행문자 제거 위한 코드
+					System.out.print("훈련 과목 : ");
+					mvo.setLecture(sc.nextLine());
+					System.out.println();
+					
+					System.out.print("ID : ");
+					mvo.setId(sc.next());
+					System.out.println();
+					
+					System.out.print("이름  : ");
+					mvo.setName(sc.next());
+					System.out.println();
+					
+					System.out.print("비밀번호 : ");
+					mvo.setPw(sc.nextInt());
+					System.out.println();
+					
+					System.out.print("전화번호 : ");
+					mvo.setPhone(sc.next());
+					System.out.println();
+					
+					System.out.print("이메일 : ");
+					mvo.setMail(sc.next());
+					System.out.println();
+					
+					System.out.print("나이  : ");
+					mvo.setAge(sc.nextInt());
+					System.out.println();
+					
+					System.out.print("성별  : ");
+					mvo.setGender(sc.next());
+					System.out.println();
+					
+					mdao.insertData(mvo);
+					System.out.print("입력이 완료되었습니다.");
+					Menu();
 					break;
 				
 				case 3 : 
 					System.out.println("3번 삭제를 선택하셨습니다.");
+//					System.out.println("삭제가 완료되었습니다.");
 					mdao.deleteOne(sc.next());
-					System.out.println("삭제가 완료되었습니다.");
+					Menu();
 					break;
 					
 				case 0 :
@@ -137,11 +179,12 @@ public class LoginTest {
 					System.out.println("0~3까지의 숫자를 선택해주세요.");
 				}
 			} else {
+				System.out.println();
 				System.out.println(id + "님 로그인 성공하셨습니다.");
-				System.out.println("---------------------");
-				System.out.println("<<메뉴를 선택하세요>>");
+				System.out.println("============================================");
+				System.out.println("\t     <<메뉴를 선택하세요>>");
 				System.out.println("1.조회 \t2.수정\t0.종료\t-1.로그아웃");
-				System.out.println("---------------------");
+				System.out.println("============================================");
 				System.out.println("번호 선택 : ");
 				num = sc.nextInt();
 				
@@ -166,7 +209,16 @@ public class LoginTest {
 							
 						case 2 : 
 							System.out.println(id + "님의 출결정보입니다.");
-//							ss.selectAttendance();
+							ArrayList<StudentVO> list1 = ss.AttendanceList();
+							
+							for(StudentVO svo : list1) {
+									if(svo.getId().equals(id)) {
+										System.out.println("=======================");
+										System.out.println(svo.stringForAtt());
+										System.out.println("=======================");
+									}
+							}
+							
 							break;
 
 						default :

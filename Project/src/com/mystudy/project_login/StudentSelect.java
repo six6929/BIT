@@ -97,11 +97,42 @@ public class StudentSelect {
 		} finally {
 			JDBC_Close.closeConnStmt(conn, pstmt);		}
 		return list;
-		
-			
 	}
 
-
+	public ArrayList<StudentVO> AttendanceList() {
+		ArrayList<StudentVO> list = null;
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASSWORD);
+			StringBuilder sb = new StringBuilder();
+			sb.append(" SELECT DISTINCT M.ID, M.NAME, R.DAYS, R.INTIME, R.OUTTIME, R.STUDYTIME, A.RATE, A.PAYMENT ");
+			sb.append("   FROM ATTENDANCEDATE A, MEMBER M, ROLLBOOK R ");
+			sb.append("  WHERE A.ID = R.ID AND R.ID = M.ID ");
+			sb.append("  ORDER BY DAYS");
+			
+				
+			pstmt = conn.prepareStatement(sb.toString());
+			rs = pstmt.executeQuery();
+			list = new ArrayList<>();
+			while (rs.next()) {
+				list.add(new StudentVO (
+						rs.getString("id"),
+						rs.getString("name"), 
+						rs.getString("days"), 
+						rs.getString("intime"), 
+						rs.getString("outtime"), 
+						rs.getInt("studytime"), 
+						rs.getInt("rate"),
+						rs.getString("payment")));
+				}	
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBC_Close.closeConnStmtRs(conn, pstmt, rs);
+			}
+			return list;
+		}
 		
 	
 	//3-2. 개인정보수정 (전체 데이터 입력)
@@ -187,8 +218,8 @@ public class StudentSelect {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, id);
-			pstmt.setInt(2, pw);
+			pstmt.setInt(1, pw);
+			pstmt.setString(2, id);
 	
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -214,8 +245,8 @@ public class StudentSelect {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, id);
-			pstmt.setString(2, phone);
+			pstmt.setString(1, phone);
+			pstmt.setString(2, id);
 	
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -242,8 +273,8 @@ public class StudentSelect {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, id);
-			pstmt.setString(2, mail);
+			pstmt.setString(1, mail);
+			pstmt.setString(2, id);
 	
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -269,8 +300,8 @@ public class StudentSelect {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, id);
-			pstmt.setInt(2, age);
+			pstmt.setInt(1, age);
+			pstmt.setString(2, id);
 	
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -298,8 +329,8 @@ public class StudentSelect {
 				
 				pstmt = conn.prepareStatement(sql);
 				
-				pstmt.setString(1, id);
-				pstmt.setString(2, gender);
+				pstmt.setString(1, gender);
+				pstmt.setString(2, id);
 		
 				result = pstmt.executeUpdate();
 			} catch (SQLException e) {
@@ -324,8 +355,8 @@ public class StudentSelect {
 				
 				pstmt = conn.prepareStatement(sql);
 				
-				pstmt.setString(1, id);
-				pstmt.setString(2, lecturename);
+				pstmt.setString(1, lecturename);
+				pstmt.setString(2, id);
 		
 				result = pstmt.executeUpdate();
 			} catch (SQLException e) {

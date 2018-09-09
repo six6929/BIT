@@ -47,14 +47,15 @@ public class ManagerDAO {
 			list = new ArrayList<>();
 			while (rs.next()) {
 				list.add(new ManagerVO (
+						rs.getString("lecturename"),
 						rs.getString("id"), 
 						rs.getString("name"), 
 						rs.getInt("pw"), 
 						rs.getString("phone"), 
 						rs.getString("mail"),
 						rs.getInt("age"),
-						rs.getString("gender"),
-						rs.getString("lecturename")));
+						rs.getString("gender")
+						));
 			}	
 			
 			
@@ -86,14 +87,14 @@ public class ManagerDAO {
 			
 			if (rs.next()) {
 				mvo = new ManagerVO(
+						rs.getString("lecturename"),
 						rs.getString("id"),
 						rs.getString("name"),
 						rs.getInt("pw"),
 						rs.getString("phone"),
 						rs.getString("mail"),
 						rs.getInt("age"),
-						rs.getString("gender"),
-						rs.getString("lecturename")
+						rs.getString("gender")
 						);
 			
 		
@@ -131,14 +132,14 @@ public class ManagerDAO {
 			
 			if (rs.next()) {
 				mvo = new ManagerVO(
+						rs.getString("lecturename"),
 						rs.getString("id"),
 						rs.getString("name"),
 						rs.getInt("pw"),
 						rs.getString("phone"),
 						rs.getString("mail"),
 						rs.getInt("age"),
-						rs.getString("gender"),
-						rs.getString("lecturename")
+						rs.getString("gender")
 						);
 			
 		
@@ -176,14 +177,14 @@ public class ManagerDAO {
 			
 			if (rs.next()) {
 				mvo = new ManagerVO(
+						rs.getString("lecturename"),
 						rs.getString("id"),
 						rs.getString("name"),
 						rs.getInt("pw"),
 						rs.getString("phone"),
 						rs.getString("mail"),
 						rs.getInt("age"),
-						rs.getString("gender"),
-						rs.getString("lecturename")
+						rs.getString("gender")
 						);
 			
 		
@@ -220,14 +221,14 @@ public class ManagerDAO {
 			
 			if (rs.next()) {
 				mvo = new ManagerVO(
+						rs.getString("lecturename"),
 						rs.getString("id"),
 						rs.getString("name"),
 						rs.getInt("pw"),
 						rs.getString("phone"),
 						rs.getString("mail"),
 						rs.getInt("age"),
-						rs.getString("gender"),
-						rs.getString("lecturename")
+						rs.getString("gender")
 						);
 			
 		
@@ -246,26 +247,28 @@ public class ManagerDAO {
 
 	
 	//2-3. 관리자 - 회원등록 및 삭제기능 (등록)
-	public int insertData(String id, String name, int pw, String phone, String mail, int age, String gender, String lecturename) {
+/*	public int insertData(String lecturename ,String id, String name, int pw, String phone, String mail, int age, String gender) {
 		int result = 0;
+		System.out.println(lecturename);
 //		System.out.println(id+","+name+","+pw+","+phone+","+mail+","+age+","+gender+","+lecturename);
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			String sql = "";
 			sql += " INSERT INTO MEMBER ";
-			sql += "        (ID, NAME, PW, PHONE, MAIL, AGE, GENDER, LECTURENAME) ";
+			sql += "        (LECTURENAME ,ID, NAME, PW, PHONE, MAIL, AGE, GENDER) ";
 			sql += " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
+
 			
-			pstmt.setString(1, id);
-			pstmt.setString(2, name);
-			pstmt.setInt(3, pw);
-			pstmt.setString(4, phone);
-			pstmt.setString(5, mail);
-			pstmt.setInt(6, age);
-			pstmt.setString(7, gender);
-			pstmt.setString(8, lecturename);
+			pstmt.setString(1, lecturename);
+			pstmt.setString(2, id);
+			pstmt.setString(3, name);
+			pstmt.setInt(4, pw);
+			pstmt.setString(5, phone);
+			pstmt.setString(6, mail);
+			pstmt.setInt(7, age);
+			pstmt.setString(8, gender);
 					
 			result = pstmt.executeUpdate();
 			
@@ -279,7 +282,80 @@ public class ManagerDAO {
 		
 		return result;
 		
+	}*/
+	public ArrayList<ManagerVO> AttendanceList() {
+		ArrayList<ManagerVO> list = null;
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASSWORD);
+			StringBuilder sb = new StringBuilder();
+			sb.append(" SELECT M.NAME, R.DAYS, R.INTIME, R.OUTTIME, A.STARTDATE, A.FINISHDATE ");
+			sb.append("   FROM ATTENDANCEDATE A, MEMBER M, ROLLBOOK R ");
+			sb.append("  WHERE A.ID = R.ID AND R.ID = M.ID ");
+			sb.append("  AND DAYS BETWEEN STARTDATE AND FINISHDATE ");
+			sb.append("  ORDER BY NAME");
+			
+				
+			pstmt = conn.prepareStatement(sb.toString());
+			rs = pstmt.executeQuery();
+			list = new ArrayList<>();
+			while (rs.next()) {
+				list.add(new ManagerVO (
+						rs.getString("name"), 
+						rs.getString("days"), 
+						rs.getString("intime"), 
+						rs.getString("outtime"), 
+						rs.getInt("startdate"),
+						rs.getInt("finishdate")
+						));
+				}	
+				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				JDBC_Close.closeConnStmtRs(conn, pstmt, rs);
+			}
+			return list;
+		}
+	
+	
+	//예비
+	public int insertData(ManagerVO mvo) {
+		int result = 0;
+//		System.out.println(mvo.getLecture());
+//		System.out.println(id+","+name+","+pw+","+phone+","+mail+","+age+","+gender+","+lecturename);
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASSWORD);
+			String sql = "";
+			sql += " INSERT INTO MEMBER ";
+			sql += "        (LECTURENAME ,ID, NAME, PW, PHONE, MAIL, AGE, GENDER) ";
+			sql += " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			
+			pstmt.setString(1, mvo.getLecture());
+			pstmt.setString(2, mvo.getId());
+			pstmt.setString(3, mvo.getName());
+			pstmt.setInt(4, mvo.getPw());
+			pstmt.setString(5, mvo.getPhone());
+			pstmt.setString(6, mvo.getMail());
+			pstmt.setInt(7, mvo.getAge());
+			pstmt.setString(8, mvo.getGender());
+					
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBC_Close.closeConnStmt(conn, pstmt);
+		}
+		
+		return result;
+		
 	}
+
+	
 	//2-3. 관리자 - 회원등록 및 삭제기능 (삭제)
 	public int deleteOne(String id) {
 		int result = 0;

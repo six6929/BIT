@@ -6,12 +6,16 @@ public class RollbookVO {
 	String days;
 	String inTime;
 	String outTime;
-	String studyTime;
+	int studyTime;
 	int lectureTime;
 	String id;
+	String name;
+	String payment;
+	int rate;
+	int checkdate;
 	
 	//생성자
-	public RollbookVO(String days, String inTime, String outTime, String studyTime, int lectureTime, String id) {
+	public RollbookVO(String days, String inTime, String outTime, int studyTime, int lectureTime, String id) {
 		super();
 		this.days = days;
 		this.inTime = inTime;
@@ -21,6 +25,23 @@ public class RollbookVO {
 		this.id = id;
 	}
 
+//	public RollbookVO(String days, String name, String inTime, String outTime, int studyTime, int rate, String payment) {
+//		super();
+//		this.days = days;
+//		this.name = name;
+//		this.inTime = inTime;
+//		this.outTime = outTime;
+//		this.studyTime = studyTime;
+//		this.rate = rate;
+//		this.payment = payment;
+//		
+//		}
+	
+	
+	public RollbookVO(int checkdate) {
+		super();
+		this.checkdate = checkdate;
+	}
 	//get, set 코드
 	public String getDays() {
 		return days;
@@ -46,11 +67,11 @@ public class RollbookVO {
 		this.outTime = outTime;
 	}
 
-	public String getStudyTime() {
+	public int getStudyTime() {
 		return studyTime;
 	}
 
-	public void setStudyTime(String studyTime) {
+	public void setStudyTime(int studyTime) {
 		this.studyTime = studyTime;
 	}
 
