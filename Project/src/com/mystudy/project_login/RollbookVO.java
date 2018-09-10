@@ -2,7 +2,7 @@ package com.mystudy.project_login;
 
 public class RollbookVO {
 
-	//변수선언
+	//
 	String days;
 	String inTime;
 	String outTime;
@@ -14,7 +14,7 @@ public class RollbookVO {
 	int rate;
 	int checkdate;
 	
-	//생성자
+	//
 	public RollbookVO(String days, String inTime, String outTime, int studyTime, int lectureTime, String id) {
 		super();
 		this.days = days;
@@ -42,7 +42,7 @@ public class RollbookVO {
 		super();
 		this.checkdate = checkdate;
 	}
-	//get, set 코드
+	//get, set 
 	public String getDays() {
 		return days;
 	}

@@ -94,12 +94,22 @@ public class ManagerVO {
 
 	@Override
 	public String toString() {
-		return "ID : " + id  + "\n" +  " 이름 : " + name + "\n" + " 패스워드 : " + pw + "\n" + " 전화번호 : " + phone + "\n" + " 메일 :" + mail + "\n" + " 나이 : " + age + "\n" + " 성별 : " + gender + "\n" + " 훈련과정 : " + lecturename + "";
+		return "\t         ID : " + id  + "\n" +  
+			   "\t         이름 : " + name + "\n" + 
+			   "\t         패스워드 : " + pw + "\n" + 
+			   "\t         전화번호 : " + phone + "\n" + 
+			   "\t         메일 :" + mail + "\n" + 
+			   "\t         나이 : " + age + "\n" + 
+			   "\t         성별 : " + gender + "\n" + 
+			   "\t         훈련과정 : " + lecturename + "";
 	}
 	
 	public String stringForAtt() {
-		return  "이름 : " + name + "\n" + "일자 : " + days + "\n" + "입실시간 : " + inTime + "\n" + 
-				"퇴실시간 : " + outTime + "\n" + "시작월 : " + startdate + "\n" + "끝나는월 : " + finishdate;
-	
+		return  "\t         이름 : " + name + "\n" + 
+				"\t         일자 : " + days + "\n" + 
+				"\t         입실시간 : " + inTime + "\n" + 
+				"\t         퇴실시간 : " + outTime + "\n" + 
+				"\t         시작월 : " + startdate + "\n" + 
+				"\t         끝나는월 : " + finishdate;
 	}
 }

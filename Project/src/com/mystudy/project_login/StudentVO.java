@@ -17,7 +17,7 @@ public class StudentVO {
 	int lectureTime;
 	String payment;
 	int rate;
-	private int checkdate;
+	int checkdate;
 		
 	public StudentVO(String id, String name, int pw, String phone, String mail, int age, String gender, String lecture) {
 		super();
@@ -97,13 +97,26 @@ public class StudentVO {
 
 	@Override
 	public String toString() {
-		return "ID : " + id  + "\n" +  " 이름 : " + name + "\n" + " 패스워드 : " + pw + "\n" + " 전화번호 : " + phone + "\n" + " 메일 :" + mail + "\n" + " 나이 : " + age + "\n" + " 성별 : " + gender + "\n" + " 훈련과정 : " + lecture + "";
+		return "\t         ID : " + id  + "\n" +  
+			   "\t         이름 : " + name + "\n" + 
+			   "\t         패스워드 : " + pw + "\n" + 
+			   "\t         전화번호 : " + phone + "\n" + 
+			   "\t         메일 :" + mail + "\n" + 
+			   "\t         나이 : " + age + "\n" + 
+			   "\t         성별 : " + gender + "\n" + 
+			   "\t         훈련과정 : " + lecture + "";
 	}
 	
 	
 	public String stringForAtt() {
-		return "ID : " + id + "\n" + "이름 : " + name + "\n" + "일자 : " + days + "\n" + "입실시간 : " + inTime + "\n" + 
-				"퇴실시간 : " + outTime + "\n" + "수강시간(분) : " + studyTime + "\n" + "출석률 : " + rate + "\n" + "수당지급가능여부 : " + payment;
+		return "\t         ID : " + id + "\n" + 
+			   "\t         이름 : " + name + "\n" + 
+			   "\t         일자 : " + days + "\n" + 
+			   "\t         입실시간 : " + inTime + "\n" + 
+			   "\t         퇴실시간 : " + outTime + "\n" + 
+			   "\t         수강시간(분) : " + studyTime + "\n" + 
+			   "\t         출석률 : " + rate + "\n" + 
+			   "\t         수당지급가능여부 : " + payment;
 	
 	}
 }

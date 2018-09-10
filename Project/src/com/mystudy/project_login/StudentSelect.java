@@ -107,6 +107,7 @@ public class StudentSelect {
 			sb.append(" SELECT DISTINCT M.ID, M.NAME, R.DAYS, R.INTIME, R.OUTTIME, R.STUDYTIME, A.RATE, A.PAYMENT ");
 			sb.append("   FROM ATTENDANCEDATE A, MEMBER M, ROLLBOOK R ");
 			sb.append("  WHERE A.ID = R.ID AND R.ID = M.ID ");
+			sb.append("AND R.DAYS BETWEEN A.STARTDATE AND A.FINISHDATE");
 			sb.append("  ORDER BY DAYS");
 			
 				

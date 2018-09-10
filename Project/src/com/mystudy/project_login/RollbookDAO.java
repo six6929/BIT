@@ -50,10 +50,10 @@ public class RollbookDAO {
 			
 			result = pstmt.executeUpdate();
 			
-			System.out.println("입력이 완료되었습니다.");
+			System.out.println("\t   >> 입력이 완료되었습니다.");
 		} catch (SQLException e) {
 //			e.printStackTrace();
-			System.out.println("이미 입실되었습니다");
+			System.out.println("\t   >> 이미 입실되었습니다");
 		} finally {
 			try {
 				pstmt.close();
@@ -109,6 +109,7 @@ public class RollbookDAO {
 			}
 			updateStudyTime(day);
 			updateAttendance(day);
+			
 		}
 		
 		

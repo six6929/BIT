@@ -259,7 +259,6 @@ public class ManagerDAO {
 			sql += " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			pstmt = conn.prepareStatement(sql);
-
 			
 			pstmt.setString(1, lecturename);
 			pstmt.setString(2, id);
@@ -292,7 +291,7 @@ public class ManagerDAO {
 			sb.append("   FROM ATTENDANCEDATE A, MEMBER M, ROLLBOOK R ");
 			sb.append("  WHERE A.ID = R.ID AND R.ID = M.ID ");
 			sb.append("  AND DAYS BETWEEN STARTDATE AND FINISHDATE ");
-			sb.append("  ORDER BY NAME");
+			sb.append("  ORDER BY DAYS");
 			
 				
 			pstmt = conn.prepareStatement(sb.toString());
